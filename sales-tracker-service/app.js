@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const socketIo = io(server, {
   cors: 'http://localhost:3000'
 });
-const buildPath = './public'
+const buildPath = '../sales-tracker-client/dist'
 app.use(express.static(buildPath));
 app.use(session({
   secret: 'secret',
