@@ -1,6 +1,5 @@
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { serverUrl } from '../../utils/Utils'
 interface formData {
     userName: string
     password: string
