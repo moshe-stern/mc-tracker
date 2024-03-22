@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const path = require('path');
 // Replace the uri string with your connection string.
-const uri = 'mongodb://127.0.0.1:27017';
+const uri = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.1';
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
