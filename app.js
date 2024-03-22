@@ -69,5 +69,5 @@ app.use(function (err, req, res, next) {
 socketIo.on('connect', () => {
   console.log('got connection');
 });
-server.listen(443);
-console.log('Server Listening on 443')
+server.listen(8080);
+console.log('Server Listening on 8080')
