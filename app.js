@@ -48,7 +48,6 @@ app.use(async (req, res, next) => {
 
 app.use(require('cors')({
   credentials: true,
-  origin: 'http://localhost:5173'
 }));
 app.get('/', (req, res, next) => {
   res.sendFile(path.join(buildPath, 'index.html'))
@@ -71,4 +70,4 @@ socketIo.on('connect', () => {
   console.log('got connection');
 });
 
-server.listen(8080);
+server.listen(443);
