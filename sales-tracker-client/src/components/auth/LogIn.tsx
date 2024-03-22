@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { serverUrl } from '../../utils/Utils'
+// import { serverUrl } from '../../utils/Utils'
 interface formData {
     userName: string
     password: string
@@ -56,7 +56,7 @@ export default function LogIn() {
     async function logInSignUp(e: FormEvent) {
         e.preventDefault()
         const type = signUp ? 'register' : 'login'
-        const response = await fetch(`${serverUrl}/${type}`, {
+        const response = await fetch(`/${type}`, {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
