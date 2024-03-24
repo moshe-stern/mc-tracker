@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+export const serverUrl = 'http://localhost:8080'
 // @ts-expect-error prop error
 export const comment: IconProp = "fa-regular fa-comment"
 // @ts-expect-error prop error

@@ -1,9 +1,10 @@
+import { serverUrl } from "../utils/Utils"
 import invoice from "../components/invoices/IInvoice"
 import type { Params } from "react-router-dom"
 
 export async function fetchInvoices({ params }: { params: Params<'id'> }): Promise<invoice[]> {
     console.log(params)
-    const response = await fetch(`/invoices/${params.id}`,
+    const response = await fetch(`${serverUrl}/invoices/${params.id}`,
         {
             method: 'GET',
             credentials: 'include'

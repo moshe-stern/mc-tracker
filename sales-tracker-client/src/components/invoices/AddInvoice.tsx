@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react"
 import invoice from "./IInvoice"
+import { serverUrl } from "../../utils/Utils";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { theUserId } from "../auth/LogIn";
 export default function AddInvoice() {
@@ -62,7 +63,7 @@ export default function AddInvoice() {
     }
     async function addInvoice(e: FormEvent) {
         e.preventDefault()
-        const response = await fetch(`/invoices/${theUserId}`, {
+        const response = await fetch(`${serverUrl}/invoices/${theUserId}`, {
             method: 'POST',
             body: JSON.stringify(invoice),
             headers: {
