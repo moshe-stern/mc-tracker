@@ -1,4 +1,3 @@
-import { Table } from '@prisma/client';
 import Joi from 'joi';
 
 const queryTables = {
