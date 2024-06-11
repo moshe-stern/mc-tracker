@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "../gunther-client-v2/src/types"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

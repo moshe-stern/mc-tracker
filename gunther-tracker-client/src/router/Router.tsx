@@ -3,9 +3,9 @@ import { createBrowserRouter, Link } from 'react-router-dom';
 import { ErrorHandler } from '../utils/Utils';
 import { fetchInvoices } from '../loaders/Loaders';
 import LogIn from '../components/auth/LogIn';
-import InvoiceTable from '../components/invoices/InvoiceTable';
+import InvoiceTable from '../components/table/InvoiceTable';
 import Success from '../components/auth/Success';
-import AddInvoice from '../components/invoices/AddInvoice';
+import AddInvoice from '../components/table/AddInvoice';
 
 export const router = createBrowserRouter([
     {
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: ':id/addinvoice',
-                element: <AddInvoice/>
+                element: <AddInvoice />
             },
             {
                 path: '*',

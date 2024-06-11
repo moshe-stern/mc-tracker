@@ -2,6 +2,8 @@ import express from 'express';
 import authRoute from './auth.route';
 import userRoute from './user.route';
 import docsRoute from './docs.route';
+import tableRoute from './table/table.route'
+import tableItemRoute from './table/tableItem.route'
 import config from '../../config/config';
 
 const router = express.Router();
@@ -14,6 +16,14 @@ const defaultRoutes = [
   {
     path: '/users',
     route: userRoute
+  },
+  {
+    path: '/table',
+    route: tableRoute
+  },
+  {
+    path: '/table-item',
+    route: tableItemRoute
   }
 ];
 
