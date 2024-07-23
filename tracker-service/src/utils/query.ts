@@ -1,4 +1,4 @@
-import { QueryOptions } from '../types/query';
+import { QueryOptions } from 'tracker-config';
 
 export function queryOptions(options: QueryOptions, keys: string[] = []) {
   const page = options.page ?? 1;

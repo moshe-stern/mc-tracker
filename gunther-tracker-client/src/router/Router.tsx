@@ -1,6 +1,6 @@
 import App from '../components/App'
 import { createBrowserRouter, Link } from 'react-router-dom';
-import { ErrorHandler } from '../utils/Utils';
+import { ErrorHandler } from '../utils/icon';
 import { fetchInvoices } from '../loaders/Loaders';
 import LogIn from '../components/auth/LogIn';
 import InvoiceTable from '../components/table/InvoiceTable';

@@ -20,6 +20,15 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "../gunther-client-v2/src/types"],
+  "include": [
+    "src",
+    "../gunther-client-v2/src/types",
+    "../tracker-config/interfaces",
+    "../tracker-config/auth.ts",
+    "../tracker-config/query.ts",
+    "../tracker-config/response.d.ts",
+    "../tracker-config/table.ts",
+    "../tracker-config/user.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

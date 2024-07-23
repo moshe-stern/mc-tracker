@@ -1,13 +1,12 @@
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { serverUrl } from '../../utils/Utils'
+import { serverUrl } from '../../utils/icon'
 interface formData {
     userName: string
     password: string
     confirmPassword?: string
     email?: string
 }
-export let theUserId = ''
 export default function LogIn() {
     const [signUp, setSignUp] = useState<boolean>(false)
     const [error, setError] = useState<string>()
@@ -21,11 +20,11 @@ export default function LogIn() {
             <form onSubmit={logInSignUp} >
                 <div className='form-group'>
                     <label htmlFor="userName">User Name</label>
-                    <input type="text"  className='form-control' id='userName' name='userName' value={formData?.userName} required onChange={handleInputChange} placeholder='User Name' />
+                    <input type="text" className='form-control' id='userName' name='userName' value={formData?.userName} required onChange={handleInputChange} placeholder='User Name' />
                 </div>
                 <div className='form-group'>
                     <label htmlFor="password">Password</label>
-                    <input type="password"  className='form-control' id='password' name='password' value={formData?.password} required onChange={handleInputChange} placeholder='Password' />
+                    <input type="password" className='form-control' id='password' name='password' value={formData?.password} required onChange={handleInputChange} placeholder='Password' />
                 </div>
                 {signUp &&
                     <>

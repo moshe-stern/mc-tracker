@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react"
 import invoice from "./IInvoice"
-import { serverUrl } from "../../utils/Utils";
+import { serverUrl } from "../../utils/icon";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { theUserId } from "../auth/LogIn";
 export default function AddInvoice() {
@@ -10,7 +10,7 @@ export default function AddInvoice() {
     const [error, setError] = useState<string>()
     return (
         <>
-            <h1>{state ? 'Edit': 'Add'} Invoice</h1>
+            <h1>{state ? 'Edit' : 'Add'} Invoice</h1>
             <h3><Link to={`/${theUserId}/invoices`} className="link">Invoices</Link></h3>
             <form onSubmit={addInvoice} onChange={handleInputChange} className="form-group">
 
@@ -49,7 +49,7 @@ export default function AddInvoice() {
                 <div className="form-group">
                     <input type="date" name='invoiceDate' value={invoice.invoiceDate?.toString()} placeholder="Date" className="form-control" />
                 </div>
-                <button className="btn btn-outline-success">{state ? 'Save': 'Add'} Invoice</button>
+                <button className="btn btn-outline-success">{state ? 'Save' : 'Add'} Invoice</button>
             </form>
             {error && <p>{error}</p>}
         </>

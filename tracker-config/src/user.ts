@@ -1,5 +1,5 @@
 import { Token } from "./auth"
-import { Table } from "./table"
+import { ITable } from "./table"
 
 interface User {
     id: number
@@ -11,7 +11,7 @@ interface User {
     createdAt: Date
     updatedAt: Date
     tokens: Token[]
-    tables: Table[]
+    tables: ITable[]
 }
 
 enum Role {

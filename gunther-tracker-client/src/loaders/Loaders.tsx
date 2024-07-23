@@ -1,4 +1,4 @@
-import { serverUrl } from "../utils/Utils"
+import { serverUrl } from "../utils/icon"
 import invoice from "../components/table/IInvoice"
 import type { Params } from "react-router-dom"
 

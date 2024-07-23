@@ -1,6 +1,6 @@
 import invoice from './IInvoice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { comment, edit } from '../../utils/Utils'
+import { comment, edit } from '../../utils/icon'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { theUserId } from '../auth/LogIn'

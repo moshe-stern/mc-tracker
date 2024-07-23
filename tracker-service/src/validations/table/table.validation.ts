@@ -8,7 +8,7 @@ const queryTables = {
   }),
   params: Joi.object().keys({
     userId: Joi.number().integer()
-  }),
+  })
 };
 
 const createTable = {
@@ -19,7 +19,6 @@ const createTable = {
   })
 };
 
-
 const updateTable = {
   params: Joi.object().keys({
     tableId: Joi.number().integer()
@@ -28,13 +27,12 @@ const updateTable = {
     headerColumns: Joi.array<string>().required(),
     name: Joi.string().required()
   })
-
 };
 
 const deleteTables = {
   body: Joi.object().keys({
     tableId: Joi.array<number>().required()
-  })    
+  })
 };
 
 export default {

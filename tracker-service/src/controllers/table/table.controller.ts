@@ -3,9 +3,11 @@ import catchAsync from '../../utils/catchAsync';
 import { tableService, userService } from '../../services';
 import ApiError from '../../utils/ApiError';
 import pick from '../../utils/pick';
+import { ICreateTable, IDeleteTables, IUpdateTable } from 'tracker-config';
+import { Prisma } from '@prisma/client';
 
 const createTable = catchAsync(async (req, res) => {
-  const { userId, headerColumns, name } = req.body;
+  const { userId, headerColumns, name }: ICreateTable = req.body;
   const table = await tableService.createTable(userId, headerColumns, name);
   res.status(httpStatus.CREATED).send(table);
 });
@@ -15,24 +17,21 @@ const queryTables = catchAsync(async (req, res) => {
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
-  const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  const result = await tableService.queryTables(user.id, options);
+  const result = await tableService.queryTables(user.id, pick(req.query, ['sortBy', 'limit', 'page']));
   res.send(result);
 });
 
 const deleteTables = catchAsync(async (req, res) => {
-  const { tableIds } = req.body
-  const result = await tableService.deleteTablesById(tableIds)
+  const { tableIds }: IDeleteTables = req.body;
+  const result = await tableService.deleteTablesById(tableIds);
   res.send(result);
 });
 
 const updateTable = catchAsync(async (req, res) => {
-  const { tableId, updateBody } = req.body
-  const result = await tableService.updateTableById(tableId, updateBody)
+  const { tableId, updateBody }: IUpdateTable = req.body;
+  const result = await tableService.updateTableById(tableId, updateBody as Prisma.TableUpdateInput);
   res.send(result);
 });
-
-
 
 export default {
   createTable,

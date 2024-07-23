@@ -1,22 +1,22 @@
 import { User } from "./user"
 
-interface Table {
+interface ITable {
     id: number
     user: User
     userId: number
     headerColumns: string[]
-    tableItems: TableItem[]
+    tableItems: ITableItem[]
     name: string
 }
 
-interface TableItem {
+interface ITableItem {
     id: number
-    table: Table
+    table: ITable
     tableId: number
     values: object
 }
 
 export type {
-    Table,
-    TableItem
+    ITable,
+    ITableItem
 }

@@ -8,13 +8,16 @@ const router = express.Router();
 
 router
   .route('/:userId')
-  .get(auth('getTableItems'), validate(tableValidation.queryTables), tableController.queryTables);
+  .get(auth('getTables'), validate(tableValidation.queryTables), tableController.queryTables);
 
 router
   .route('/')
   .post(auth('manageTables'), validate(tableValidation.createTable), tableController.createTable)
   .patch(auth('manageTables'), validate(tableValidation.updateTable), tableController.updateTable)
-  .delete(auth('manageTables'), validate(tableValidation.deleteTables), tableController.deleteTables);
-
+  .delete(
+    auth('manageTables'),
+    validate(tableValidation.deleteTables),
+    tableController.deleteTables
+  );
 
 export default router;
