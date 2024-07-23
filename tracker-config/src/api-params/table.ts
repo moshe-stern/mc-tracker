@@ -1,8 +1,8 @@
-import { QueryOptions } from "../query";
+import { IQueryOptions } from "../query";
 import { ITable } from "../table";
 
 interface IQueryTables {
-    userId: number, options: QueryOptions
+    userId: number, options: IQueryOptions
 }
 
 interface ICreateTable {

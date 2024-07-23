@@ -1,8 +1,8 @@
-import { User } from "./user"
+import { IUser } from "./user"
 
 interface ITable {
     id: number
-    user: User
+    user: IUser
     userId: number
     headerColumns: string[]
     tableItems: ITableItem[]

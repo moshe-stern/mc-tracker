@@ -1,17 +1,17 @@
-import { User } from "./user"
+import { IUser } from "./user"
 
-interface Token {
+interface IToken {
     id: number
     token: string
-    type: TokenType
+    type: ETokenType
     expires: Date
     blacklisted: boolean
     createdAt: Date
-    user: User
+    user: IUser
     userId: number
 }
 
-enum TokenType {
+enum ETokenType {
     ACCESS,
     REFRESH,
     RESET_PASSWORD,
@@ -19,7 +19,7 @@ enum TokenType {
 }
 
 export type {
-    Token,
-    TokenType
+    IToken,
+    ETokenType
 }
 

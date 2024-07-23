@@ -1,8 +1,8 @@
-import { QueryOptions } from "../query";
+import { IQueryOptions } from "../query";
 import { ITableItem } from "../table";
 interface IQueryTableItems {
     tableId: number
-    options: QueryOptions
+    options: IQueryOptions
 }
 
 interface IAddTableItems {

@@ -1,21 +1,21 @@
 import { toQueryString } from "../utils/api";
-import { ICreateTable, IDeleteTablesById, IQueryTables, ITable, IUpdateTableById } from 'tracker-config'
+import { ICreateTable, IDeleteTables, IQueryTables, ITable, IUpdateTable } from 'tracker-config'
 import { Methods, doFetch } from "./base";
-const tableFetch = (method?: Methods, data?: object,) => doFetch('table', method, data)
-function queryTables({ userId, options }: IQueryTables): Promise<ITable[]> {
-    return doFetch(`table/${userId}?${toQueryString(options)}`)
+const tableFetch = <T>(method?: Methods, data?: object) => doFetch<T>('table', method, data)
+function queryTables({ userId, options }: IQueryTables) {
+    return doFetch<ITable[]>(`table/${userId}?${toQueryString(options)}`)
 }
 
 function createTable(createTable: ICreateTable) {
-    return tableFetch('POST', createTable)
+    return tableFetch<ITable>('POST', createTable)
 }
 
-function updateTable(updateTable: IUpdateTableById) {
-    return tableFetch('PATCH', updateTable)
+function updateTable(updateTable: IUpdateTable) {
+    return tableFetch<ITable>('PATCH', updateTable)
 }
 
-function deleteTables(deleteTables: IDeleteTablesById) {
-    return tableFetch('DELETE', deleteTables)
+function deleteTables(deleteTables: IDeleteTables) {
+    return tableFetch<number[]>('DELETE', deleteTables)
 }
 
 export {

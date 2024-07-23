@@ -4,7 +4,7 @@ import ApiError from '../utils/ApiError';
 import { TokenType, User } from '@prisma/client';
 import prisma from '../client';
 import { encryptPassword, isPasswordMatch } from '../utils/encryption';
-import { AuthTokensResponse } from 'tracker-config';
+import { IAuthTokensResponse } from 'tracker-config';
 import exclude from '../utils/exclude';
 import httpStatus from 'http-status';
 
@@ -58,7 +58,7 @@ const logout = async (refreshToken: string): Promise<void> => {
  * @param {string} refreshToken
  * @returns {Promise<AuthTokensResponse>}
  */
-const refreshAuth = async (refreshToken: string): Promise<AuthTokensResponse> => {
+const refreshAuth = async (refreshToken: string): Promise<IAuthTokensResponse> => {
   try {
     const refreshTokenData = await tokenService.verifyToken(refreshToken, TokenType.REFRESH);
     const { userId } = refreshTokenData;

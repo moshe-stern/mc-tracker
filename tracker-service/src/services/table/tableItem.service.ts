@@ -1,11 +1,11 @@
 import { Prisma, TableItem } from '@prisma/client';
 import prisma from '../../client';
-import { QueryOptions } from 'tracker-config';
+import { IQueryOptions } from 'tracker-config';
 import httpStatus from 'http-status';
 import ApiError from '../../utils/ApiError';
 import { queryOptions } from '../../utils/query';
 
-const queryTableItems = async (filter: Prisma.TableItemWhereInput, options: QueryOptions): Promise<TableItem[]> => {
+const queryTableItems = async (filter: Prisma.TableItemWhereInput, options: IQueryOptions): Promise<TableItem[]> => {
   const { skip, take, orderBy } = queryOptions(options);
   return await prisma.tableItem.findMany({
     where: filter,
@@ -39,7 +39,7 @@ const deleteTableItems = async (tableItemIds: number[]): Promise<number[] | null
     select: { id: true }
   });
   if (!tableItems?.length) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Tables not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Table Items not found');
   }
   const ids = tableItems.map((tableItem) => tableItem.id);
   const deleted = (

@@ -1,25 +1,25 @@
-import { Token } from "./auth"
+import { IToken } from "./auth"
 import { ITable } from "./table"
 
-interface User {
+interface IUser {
     id: number
     email: string
     name?: string
     password: string
-    role: Role
+    role: ERole
     isEmailVerified: boolean
     createdAt: Date
     updatedAt: Date
-    tokens: Token[]
+    tokens: IToken[]
     tables: ITable[]
 }
 
-enum Role {
+enum ERole {
     USER,
     ADMIN
 }
 
 export type {
-    Role,
-    User
+    ERole,
+    IUser
 }

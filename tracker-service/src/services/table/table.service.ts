@@ -1,11 +1,11 @@
 import prisma from '../../client';
 import { Prisma, Table } from '@prisma/client';
 import httpStatus from 'http-status';
-import { QueryOptions } from 'tracker-config';
+import { IQueryOptions } from 'tracker-config';
 import ApiError from '../../utils/ApiError';
 import { queryOptions } from '../../utils/query';
 
-const queryTables = async (userId: number, options: QueryOptions): Promise<Table[]> => {
+const queryTables = async (userId: number, options: IQueryOptions): Promise<Table[]> => {
   const { skip, take, orderBy } = queryOptions(options);
   const tables = await prisma.table.findMany({
     where: { userId },

@@ -1,4 +1,4 @@
-interface QueryOptions {
+interface IQueryOptions {
   select?: object
   limit?: number;
   page?: number;
@@ -7,5 +7,5 @@ interface QueryOptions {
 }
 
 export {
-  QueryOptions
+  IQueryOptions
 }

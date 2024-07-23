@@ -1,14 +1,14 @@
-interface TokenResponse {
+interface ITokenResponse {
   token: string;
   expires: Date;
 }
 
-interface AuthTokensResponse {
-  access: TokenResponse;
-  refresh?: TokenResponse;
+interface IAuthTokensResponse {
+  access: ITokenResponse;
+  refresh?: ITokenResponse;
 }
 
 export {
-  TokenResponse,
-  AuthTokensResponse
+  ITokenResponse,
+  IAuthTokensResponse
 }
