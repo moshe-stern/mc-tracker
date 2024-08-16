@@ -20,8 +20,7 @@ export const useUserStore = create<UserState>((set) => ({
     clearTokens: () => set({ tokens: undefined }),
     isAuthenticated: (): boolean => {
         const state = useUserStore.getState();
-        console.log(state);
         if (!state.tokens) return false
-        return state.tokens.access.expires.getTime() < new Date().getTime()
+        return new Date(state.tokens.access.expires).getTime() >= new Date().getTime()
     },
 }));

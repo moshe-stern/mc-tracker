@@ -3,9 +3,9 @@ import { createBrowserRouter, Link } from 'react-router-dom';
 import { ErrorHandler } from '../components/error';
 import LogIn from '../components/auth/log-in';
 import Register from '@/components/auth/register';
-import Success from '@/components/auth/success';
 import Tables from '@/components/table/tables';
 import PrivateRoutes from './private-route';
+import Success from '@/components/auth/Success';
 
 export const router = createBrowserRouter([
     {

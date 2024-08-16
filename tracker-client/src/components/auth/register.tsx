@@ -2,7 +2,7 @@ import { register } from "@/api/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Register () {
+function Register() {
     const [formData, setFormData] = useState({
         confirmPassword: '',
         password: '',
@@ -39,22 +39,22 @@ function Register () {
             </div>
         </>
     )
-    function handleInputChange (event: React.ChangeEvent<HTMLFormElement>) {
+    function handleInputChange(event: React.ChangeEvent<HTMLFormElement>) {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({
             ...prevFormData,
             [name]: value,
         }));
     }
-    async function handleRegister (e: React.SyntheticEvent) {
+    async function handleRegister(e: React.SyntheticEvent) {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
             seterrorMsg('Passwords do not match')
             return
         }
         const response = await register(formData.email, formData.password, formData.name)
-        if (!response) {
-            seterrorMsg('Email or Password is incorrect')
+        if (response.isError) {
+            seterrorMsg((response.result as Error).message)
         } else {
             navigate('success')
         }
