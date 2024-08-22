@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  min-width: 300px;
+  @media (width > 550px) {
+    min-width: 500px;
+  }
+}
+
+.sub-container {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
