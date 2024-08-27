@@ -6,35 +6,47 @@ import Register from '@/components/auth/register';
 import Tables from '@/components/table/tables';
 import PrivateRoutes from './private-route';
 import Success from '@/components/auth/Success';
+import { AddTable } from '@/components/table/add-table';
 
 export const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <App />,
-        errorElement: <ErrorHandler />,
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorHandler />,
+    children: [
+      {
+        index: true,
+        element: <LogIn></LogIn>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
+      {
+        path: "success",
+        element: <Success></Success>,
+      },
+      {
+        path: "app",
         children: [
-            {
-                index: true,
-                element: <LogIn></LogIn>
-            },
-            {
-                path: 'register',
-                element: <Register></Register>
-            },
-            {
-                path: 'success',
-                element: <Success></Success>
-            },
-            {
-                path: 'app',
-                element: <PrivateRoutes component={<Tables></Tables>}></PrivateRoutes>
-            },
-            {
-                path: '*',
-                element: <Link to={`/`} >
-                    Not sure where you are going... click here to go home
-                </Link>
-            }
-        ]
-    }
+          {
+            path: "add-table",
+            element: <PrivateRoutes component={<AddTable/>}></PrivateRoutes>
+          },
+          {
+            path: "tables",
+            element: <PrivateRoutes component={<Tables/>}></PrivateRoutes>
+          }
+        ],
+      },
+      {
+        path: "*",
+        element: (
+          <Link to={`/`}>
+            Not sure where you are going... click here to go home
+          </Link>
+        ),
+      },
+    ],
+  },
 ]);

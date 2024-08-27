@@ -7,7 +7,6 @@ interface IQueryTables {
 
 interface ICreateTable {
     userId: number,
-    headerColumns: string[],
     name: string
 }
 

@@ -19,11 +19,11 @@ function LogIn() {
                     <h1 className="text-primary" >Log In</h1>
                     <div className="form-floating mb-3">
                         <input type="email" className={`form-control ${isError && 'is-invalid'}`} placeholder="name@example.com" required name="email" />
-                        <label >Email address</label>
+                        <label htmlFor="email">Email address</label>
                     </div>
                     <div className="form-floating">
                         <input type="password" className={`form-control ${isError && 'is-invalid'}`} placeholder="Password" required name="password" />
-                        <label >Password</label>
+                        <label htmlFor ="password" >Password</label>
                     </div>
                     <button type="submit" className="btn btn-primary btn-lg">Confirm</button>
                     {isError && <p className="text-danger">Email or Password is incorrect</p>}
@@ -54,7 +54,7 @@ function LogIn() {
             setTokens(tokens)
             setUser(user)
             console.log(useUserStore.getState().isAuthenticated(), 'hello');
-            navigate('/app')
+            navigate('/app/tables')
         }
     }
 }
