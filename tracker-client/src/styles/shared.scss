@@ -3,8 +3,16 @@
   flex-direction: column;
   gap: 1em;
   min-width: 300px;
+  &.table-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
   @media (width > 550px) {
     min-width: 500px;
+    &.table-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    }
   }
 }
 

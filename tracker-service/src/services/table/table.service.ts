@@ -6,10 +6,9 @@ import ApiError from '../../utils/ApiError';
 import { queryOptions } from '../../utils/query';
 
 const queryTables = async (userId: number, options: IQueryOptions): Promise<Table[]> => {
-  const { skip, take, orderBy } = queryOptions(options);
+  const { take, orderBy } = queryOptions(options);
   const tables = await prisma.table.findMany({
     where: { userId },
-    skip,
     take,
     orderBy
   });

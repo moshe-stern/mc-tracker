@@ -5,16 +5,17 @@ import { ITable } from "tracker-config";
 import Table from "./table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 function Tables() {
   const [tables, setTables] = useState<ITable[]>([]);
-  const state = useUserStore.getState();
+  const navigate = useNavigate();
   useEffect(() => {
     async function getTables() {
       const { user } = useUserStore.getState();
       if (user) {
         try {
-          const response = await queryTables({ userId: user.id, options: {} });
+          const response = await queryTables({ options: { limit: 10 } });
           if (response.isError) {
             throw new Error((response.result as Error).message);
           } else {
@@ -29,20 +30,34 @@ function Tables() {
   }, []);
   return (
     <>
+      <h1>Tables</h1>
       <h3>
-        Add Tables
+        Add Table
         <FontAwesomeIcon icon={faPlusSquare} size="lg" onClick={addTable} />
       </h3>
-
-      {tables.length
-        ? tables.map((table) => <Table table={table}></Table>)
-        : "No Tables"}
+      <div className="container table-grid">
+        {tables.length
+          ? tables.map((table, index) => (
+              <div
+                className="card border-primary mb-3 btn btn-outline-primary col"
+                onClick={() =>
+                  navigate("/app/view-table", { state: { table } })
+                }
+                key={index}
+              >
+                <div className="card-body">
+                  <h4 className="card-title">{table.name}</h4>
+                </div>
+              </div>
+            ))
+          : "No Tables"}
+      </div>
     </>
   );
   async function addTable() {
     const response = await createTable({
-      userId: state.user!.id,
       name: "New Table",
+      headerColumns: ["A", "B", "C", "D", "E"],
     });
     if (!response.isError) {
       setTables([...tables, response.result as ITable]);

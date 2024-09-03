@@ -13,9 +13,11 @@ const queryTables = {
 
 const createTable = {
   body: Joi.object().keys({
-    userId: Joi.number().required(),
     headerColumns: Joi.array<string>().required(),
     name: Joi.string().required()
+  }),
+  params: Joi.object().keys({
+    userId: Joi.number().integer()
   })
 };
 

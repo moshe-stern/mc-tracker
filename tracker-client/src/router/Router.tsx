@@ -6,7 +6,7 @@ import Register from '@/components/auth/register';
 import Tables from '@/components/table/tables';
 import PrivateRoutes from './private-route';
 import Success from '@/components/auth/Success';
-import { AddTable } from '@/components/table/add-table';
+import Table from '@/components/table/table';
 
 export const router = createBrowserRouter([
   {
@@ -30,8 +30,8 @@ export const router = createBrowserRouter([
         path: "app",
         children: [
           {
-            path: "add-table",
-            element: <PrivateRoutes component={<AddTable/>}></PrivateRoutes>
+            path: "view-table",
+            element: <PrivateRoutes component={<Table/>}></PrivateRoutes>
           },
           {
             path: "tables",

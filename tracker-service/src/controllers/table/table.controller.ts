@@ -7,8 +7,8 @@ import { ICreateTable, IDeleteTables, IUpdateTable } from 'tracker-config';
 import { Prisma } from '@prisma/client';
 
 const createTable = catchAsync(async (req, res) => {
-  const { userId, headerColumns, name }: ICreateTable = req.body;
-  const table = await tableService.createTable(userId, headerColumns, name);
+  const { headerColumns, name }: ICreateTable = req.body;
+  const table = await tableService.createTable(req.params.userId, headerColumns, name);
   res.status(httpStatus.CREATED).send(table);
 });
 

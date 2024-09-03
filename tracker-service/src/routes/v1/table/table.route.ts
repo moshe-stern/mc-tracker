@@ -8,10 +8,7 @@ const router = express.Router();
 
 router
   .route('/:userId')
-  .get(auth('getTables'), validate(tableValidation.queryTables), tableController.queryTables);
-
-router
-  .route('/')
+  .get(auth('getTables'), validate(tableValidation.queryTables), tableController.queryTables)
   .post(auth('manageTables'), validate(tableValidation.createTable), tableController.createTable)
   .patch(auth('manageTables'), validate(tableValidation.updateTable), tableController.updateTable)
   .delete(

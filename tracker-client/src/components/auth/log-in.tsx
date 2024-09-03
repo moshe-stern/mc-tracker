@@ -53,7 +53,6 @@ function LogIn() {
             }
             setTokens(tokens)
             setUser(user)
-            console.log(useUserStore.getState().isAuthenticated(), 'hello');
             navigate('/app/tables')
         }
     }

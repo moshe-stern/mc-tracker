@@ -2,11 +2,11 @@ import { IQueryOptions } from "../query";
 import { ITable } from "../table";
 
 interface IQueryTables {
-    userId: number, options: IQueryOptions
+    options: IQueryOptions
 }
 
 interface ICreateTable {
-    userId: number,
+    headerColumns: string[]
     name: string
 }
 
