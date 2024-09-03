@@ -47,7 +47,7 @@ model TableItem {
   id      Int   @id @default(autoincrement())
   table   Table @relation(fields: [tableId], references: [id])
   tableId Int
-  values  Json
+  values  String[]
 }
 
 enum Role {

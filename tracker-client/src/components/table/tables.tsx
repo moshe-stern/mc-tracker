@@ -2,7 +2,6 @@ import { createTable, queryTables } from "@/api/table";
 import { useUserStore } from "@/store/user";
 import { useEffect, useState } from "react";
 import { ITable } from "tracker-config";
-import Table from "./table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";

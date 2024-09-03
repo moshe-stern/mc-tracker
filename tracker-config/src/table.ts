@@ -13,7 +13,7 @@ interface ITableItem {
     id: number
     table: ITable
     tableId: number
-    values: object
+    values: string[]
 }
 
 export type {

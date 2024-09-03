@@ -15,7 +15,7 @@ const queryTableItems = async (filter: Prisma.TableItemWhereInput, options: IQue
   });
 };
 
-const addTableItems = async (items: { tableId: number; values: object }[]): Promise<number> => {
+const addTableItems = async (items: { tableId: number; values: string[] }[]): Promise<number> => {
   return (
     await prisma.tableItem.createMany({
       data: items

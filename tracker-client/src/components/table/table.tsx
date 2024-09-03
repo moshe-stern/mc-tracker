@@ -1,41 +1,98 @@
 import { updateTable } from "@/api/table";
-import { width } from "@fortawesome/free-regular-svg-icons/faAddressBook";
 import { ActiveTable } from "active-table-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ITable } from "tracker-config";
 
 function Table() {
   const { state } = useLocation();
   const [table, setTable] = useState<ITable>(state.table as ITable);
-  // useEffect(() => {
-  //   updateTable({ tableId: table.id, updateBody: table });
-  // }, [table]);
   return (
     <>
-      <h1 contentEditable>
-        {table.name}
-      </h1>
+      <h1>{table.name}</h1>
       <ActiveTable
         onCellUpdate={handleCellUpdate}
         pagination={true}
         tableStyle={{
           borderRadius: "10px",
           boxShadow: "rgb(172 172 172 / 17%) 0px 0.5px 1px 0px",
-          width: "100%",
-          height: "100%",
         }}
         data={[
           table.headerColumns,
-          ["Mars", 6792, 0.642, 2, 3934],
-          ["Saturn", 120536, 568, 82, 687],
-          ["Neptune", 49528, 102, 14, 1638],
+          ...table.tableItems.map((item) => item.values),
         ]}
       />
+      <button
+        type="button"
+        className="btn btn-primary btn-lg"
+        onClick={() => updateTable({ tableId: table.id, updateBody: table })}
+      >
+        Save Changes
+      </button>
     </>
   );
-  function handleCellUpdate(val: unknown) {
-    console.log(val);
+
+  function handleCellUpdate(vals: {
+    text: string;
+    rowIndex: number;
+    columnIndex: number;
+    updateType: string;
+  }) {
+    console.log(vals);
+    switch (vals.updateType) {
+      case "Updated":
+        update(vals);
+        break;
+      case "Add":
+        add(vals);
+        break;
+      case "Removed":
+        remove(vals);
+    }
+  }
+
+  function update(vals: {
+    text: string;
+    rowIndex: number;
+    columnIndex: number;
+  }) {
+    if (vals.rowIndex === 0) {
+      const updatedHeaders = [...table.headerColumns];
+      updatedHeaders[vals.columnIndex] = vals.text;
+      setTable({ ...table, headerColumns: updatedHeaders });
+    } else {
+      const updatedTableItems = [...table.tableItems];
+      updatedTableItems[vals.rowIndex].values[vals.columnIndex] = vals.text;
+      setTable({ ...table, tableItems: updatedTableItems });
+    }
+  }
+
+  function remove(vals: {
+    text: string;
+    rowIndex: number;
+    columnIndex: number;
+  }) {
+    if (vals.rowIndex === 0) {
+      const updatedHeaders = [...table.headerColumns];
+      updatedHeaders.splice(vals.columnIndex);
+      setTable({ ...table, headerColumns: updatedHeaders });
+    } else {
+      const updatedTableItems = [...table.tableItems];
+      updatedTableItems.splice(vals.columnIndex);
+      setTable({ ...table, tableItems: updatedTableItems });
+    }
+  }
+
+  function add(vals: { text: string; rowIndex: number; columnIndex: number }) {
+    if (vals.rowIndex === 0) {
+      const updatedHeaders = [...table.headerColumns];
+      updatedHeaders.push(vals.text);
+      setTable({ ...table, headerColumns: updatedHeaders });
+    } else {
+      const updatedTableItems = [...table.tableItems];
+      updatedTableItems[vals.rowIndex].values.push(vals.text);
+      setTable({ ...table, tableItems: updatedTableItems });
+    }
   }
 }
 export default Table;

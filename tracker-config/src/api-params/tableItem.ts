@@ -8,7 +8,7 @@ interface IQueryTableItems {
 interface IAddTableItems {
     items: {
         tableId: number;
-        values: object;
+        values: string[];
     }[]
 }
 

@@ -9,6 +9,11 @@ const queryTables = async (userId: number, options: IQueryOptions): Promise<Tabl
   const { take, orderBy } = queryOptions(options);
   const tables = await prisma.table.findMany({
     where: { userId },
+    include: {
+      tableItems: {
+        take
+      }
+    },
     take,
     orderBy
   });
